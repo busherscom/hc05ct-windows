@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
+using System.IO.Ports;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Documents;
-using System.IO.Ports;
-using System.Threading;
 using System.Windows.Threading;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Analytics;
 
 namespace HC05CT
 {
@@ -16,14 +16,18 @@ namespace HC05CT
     public partial class MainWindow : Window
     {
         #region variables
-        //Richtextbox
-        readonly FlowDocument mcFlowDoc = new FlowDocument();
-        readonly Paragraph para = new Paragraph();
 
-        //Serial 
-        readonly SerialPort serial = new SerialPort();
-        string recieved_data;
-        #endregion
+        //Richtextbox
+        private readonly FlowDocument mcFlowDoc = new FlowDocument();
+
+        private readonly Paragraph para = new Paragraph();
+
+        //Serial
+        private readonly SerialPort serial = new SerialPort();
+
+        private string recieved_data;
+
+        #endregion variables
 
         public MainWindow()
         {
@@ -62,6 +66,7 @@ namespace HC05CT
                         Crashes.TrackError(exception);
                     }
                     break;
+
                 default:
                     try // just in case serial port is not open could also be acheved using if(serial.IsOpen)
                     {
@@ -80,6 +85,7 @@ namespace HC05CT
         #region Recieving
 
         private delegate void UpdateUiTextDelegate(string text);
+
         private void Recieve(object sender, SerialDataReceivedEventArgs e)
         {
             // Collecting the characters received to our 'buffer' (string).
@@ -87,6 +93,7 @@ namespace HC05CT
             Dispatcher.Invoke(DispatcherPriority.Send, new UpdateUiTextDelegate(WriteData), recieved_data);
             Analytics.TrackEvent("Recieve");
         }
+
         private void WriteData(string text)
         {
             // Assign the value of the recieved_data to the RichTextBox.
@@ -95,20 +102,22 @@ namespace HC05CT
             Commdata.Document = mcFlowDoc;
         }
 
-        #endregion
+        #endregion Recieving
 
-        #region Sending        
+        #region Sending
 
         private void Send_Data(object sender, RoutedEventArgs e)
         {
-            SerialCmdSend("AT+UART=9600,0,0\r\n");
+            SerialCmdSend("AT+UART=115200,0,0\r\n");
             Analytics.TrackEvent("Send Data");
         }
+
         private void Verify_Data(object sender, RoutedEventArgs e)
         {
             SerialCmdSend("AT+UART?\r\n");
             Analytics.TrackEvent("Verify Data");
         }
+
         public void SerialCmdSend(string data)
         {
             if (serial.IsOpen)
@@ -118,7 +127,7 @@ namespace HC05CT
                     // Send the binary data out the port
                     byte[] hexstring = Encoding.ASCII.GetBytes(data);
                     //There is a intermitant problem that I came across
-                    //If I write more than one byte in succesion without a 
+                    //If I write more than one byte in succesion without a
                     //delay the PIC i'm communicating with will Crash
                     //I expect this id due to PC timing issues ad they are
                     //not directley connected to the COM port the solution
@@ -139,6 +148,7 @@ namespace HC05CT
                 }
             }
         }
-        #endregion
+
+        #endregion Sending
     }
 }

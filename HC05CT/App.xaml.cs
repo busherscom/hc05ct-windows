@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows;
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System;
 using System.Globalization;
-
-
+using System.Windows;
 
 namespace HC05CT
 {
@@ -26,6 +24,7 @@ namespace HC05CT
             // System.Guid? installId = await AppCenter.GetInstallIdAsync();
             Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
         }
+
         private static void SetCountryCode()
         {
             try
@@ -41,6 +40,4 @@ namespace HC05CT
             }
         }
     }
-
-
 }
