@@ -26,7 +26,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="48" />
                     <RowDefinition Height="48" />
-
+                    <RowDefinition Height="48" />
                     <RowDefinition Height="191" />
                 </Grid.RowDefinitions>
 
@@ -47,7 +47,11 @@
 
                 <TextBlock Text="Config Device" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
 
-                <Button Grid.Column="1" Grid.Row="1" Content="AT+UART=115200,0,0" HorizontalAlignment="Stretch" Margin="6" FontSize="16" Click="Send_Data"/>
+                <Button Grid.Column="1" Grid.Row="1" Content="AT+UART=9600,0,0" HorizontalAlignment="Stretch" Margin="6" FontSize="16" Click="Send_Data"/>
+
+                <TextBlock Text="Get Config" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="16" Foreground="White" VerticalAlignment="Center"/>
+
+                <Button Grid.Column="1" Grid.Row="2" Content="AT+UART?" HorizontalAlignment="Stretch" Margin="6" FontSize="16" Click="Verify_Data"/>
 
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Recieved Data" TextAlignment="Center" FontSize="16" Foreground="White" Margin="0, 12, 0, 0"/>
                 <RichTextBox Grid.Column="1" Grid.Row="3" x:Name="Commdata"  Background="#FF1F3D7A" FontSize="16" Foreground="White" Margin="6" IsReadOnly="True"/>

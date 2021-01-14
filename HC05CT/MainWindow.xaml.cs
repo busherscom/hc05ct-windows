@@ -101,8 +101,13 @@ namespace HC05CT
 
         private void Send_Data(object sender, RoutedEventArgs e)
         {
-            SerialCmdSend("AT+UART=115200,0,0");
+            SerialCmdSend("AT+UART=9600,0,0\r\n");
             Analytics.TrackEvent("Send Data");
+        }
+        private void Verify_Data(object sender, RoutedEventArgs e)
+        {
+            SerialCmdSend("AT+UART?\r\n");
+            Analytics.TrackEvent("Verify Data");
         }
         public void SerialCmdSend(string data)
         {
