@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LB ELECTRONICA BUSHERS SAS")]
 [assembly: AssemblyProduct("HC05CT")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("LB ELECTRONICA BUSHERS SAS")]
 [assembly: AssemblyCulture("")]
 
@@ -48,7 +48,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.6.0")]
+[assembly: AssemblyFileVersion("1.0.6.0")]
 [assembly: Guid("d1e1ceb9-d731-4115-bc35-c00673ea5d14")]
 [assembly: NeutralResourcesLanguage("en")]

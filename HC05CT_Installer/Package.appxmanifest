@@ -7,9 +7,9 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="Bushers.HC-05ConfigTool"
+    Name="Bushers.hc05ct"
     Publisher="CN=3214E4A9-C866-42BE-81A0-056FBE18C7D7"
-    Version="1.0.5.0" />
+    Version="1.0.6.0" />
 
   <Properties>
     <DisplayName>HC-05 Config Tool</DisplayName>
